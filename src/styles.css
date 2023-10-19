@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Lemonada:wght@700&family=Stick+No+Bills:wght@200;600;800&family=Tilt+Warp&display=swap');
+
+
+body{
+
+}
+h1{
+    font-family: 'Stick No Bills', sans-serif;
+    
+}
+p{
+    font-family: 'Instrument Serif', serif;
+
+}

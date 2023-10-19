@@ -1,0 +1,44 @@
+               
+
+
+
+               Bank App Frontend
+
+    1 Create a project : ng new Bank App
+    
+    2 Run the Application : ng s -o
+
+    3 Clean code by removing all codes from app.component,html
+
+    4 Includes 3rd party libraries : font awesome, bootstrap and google fonts
+
+    5 Generate components
+            1 Login -> ng g c Login
+            2 Register -> ng g c Register
+            3 dasboard -> ng g c dasboard
+            4 transaction -> ng g c transaction
+            5 page not found -> ng  g c page not found
+
+    6 Setup the path for each component in app.routing module.ts
+
+    7 Design register and login components
+
+    8 Validation for forms
+              -> Angular Forms - reactive Forms - To apply user input validations 
+                  1, Import it in  app.module.ts
+
+              Reactive Forms,
+                              -Form Group(inside ts file)
+                              -Form Array (inside ts file)
+                              -Form Controller(inside html file)
+    9 Create a Service
+              -> To make api call 
+              ->ng g s services/api
+
+    10 API CALL - httpClientModule(module)
+              -> Import in app.module.ts
+
+    11 Dependancy injection
+              -> To share data between components
+              -> Eg: api.services => register component
+                              

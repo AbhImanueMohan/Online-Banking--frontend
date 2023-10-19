@@ -1,0 +1,117 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid" style="background-color: #cf8c8c;">
+      <a class="navbar-brand"> <img width="30px" height="30px" src="https://pngimg.com/uploads/bank/bank_PNG21.png" alt="">SBI Bank</a>
+      <form class="d-flex" role="search">
+      </form>
+    </div>
+  </nav>
+<h1 class="text-center" style="font-weight: 700;" >login</h1><br>
+<div class="row">
+    <div class="col-6"><br><br>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img class="text-center" width="400px" height="400px"
+            src="https://image.freepik.com/free-vector/login-concept-illustration_114360-739.jpg" alt="">
+    </div>
+    <div class="col-6 border border-2 shadow rounded" style="width: 400px; height: 350px;"><br><br><br>
+<form [formGroup]="loginForm" (ngSubmit)="login()" >
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputEmail" class="col-form-label">Account No.</label>
+                
+            </div>
+            <div class="col-auto">
+                <input name="acno" formControlName="acno" type="text" id="inputAccno6" class="form-control" aria-labelledby="accnoHelpInline">
+                <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" class="text-danger ">Invalid account No !</div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">Password</label>
+                </div>
+                <div class="col-auto">
+                    <input name="password" formControlName="password" type="password" id="inputPassword6" class="form-control" aria-labelledby="passwordHelpInline"
+                        placeholder="⚫⚫⚫⚫⚫⚫⚫">
+                        <div *ngIf="this.loginForm.get('password')?.errors && this.loginForm.get('password')?.touched" class="text-danger ">Invalid Password !</div>
+                </div>
+                <div class="text-danger text-center fw-bolder mt-2">
+                  {{loginErrorMsg}}
+                </div>
+            </div>
+            <button type="submit" class="w-25 text-center border rounded" style="margin-left: 150px; ">
+              <span class="fw-bolder">Login</span>
+              <!-- spinner -->
+              <div *ngIf="loginSuccessStatus" class=" ms-2 spinner-border text-primary" role="status" style="height: 15px; width: 15px;">
+                <span class="visually-hidden">Loading...</span>
+              </div></button>
+            <p class="text-center text-primary"><a routerLink="register"  style="text-decoration: none;">Don't have an Account  Register</a></p>
+        </div>
+      </form>
+    </div>
+
+    <footer class="text-center text-white" style="background-color: #cf8c8c;">
+      <!-- Grid container -->
+      <div class="container pt-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+    
+          <!-- Twitter -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-twitter"></i
+          ></a>
+    
+          <!-- Google -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-google"></i
+          ></a>
+    
+          <!-- Instagram -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-instagram"></i
+          ></a>
+    
+          <!-- Linkedin -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <!-- Github -->
+          <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-github"></i
+          ></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      <div class="text-center text-dark p-3" style="background-color: rgb(197, 106, 106);">
+        © 2020 Copyright:
+        <a class="text-dark" href="https://bankapp.com/">BankApp.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>

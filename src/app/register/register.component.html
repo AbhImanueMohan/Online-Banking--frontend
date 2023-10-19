@@ -1,0 +1,148 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand"> <img width="30px" height="30px" src="https://pngimg.com/uploads/bank/bank_PNG21.png" alt="">SBI Bank</a>
+      <form class="d-flex" role="search">
+      </form>
+    </div>
+  </nav>
+  <!-- register loading -->
+  <div *ngIf="regSuccessLoading" class="container text-center ma-5 p-5">
+    
+    <h3><img height="50px" width="50px" src="https://th.bing.com/th/id/R.5b212e0640c48295a266ab17df00a2e4?rik=W5O%2f9tJ5AYpHeQ&riu=http%3a%2f%2fedumars.net%2fskin%2fweb%2fimages%2floading.gif&ehk=Z4ViZYRE36Z0DdAP4%2fR8mhpyP5ZzXB%2bDx2tQityuKA8%3d&risl=&pid=ImgRaw&r=0" alt="">
+       please wait...Your data is getting registered
+     
+    </h3>
+
+  </div>
+<div>
+
+
+<div class="row" *ngIf="!regSuccessLoading">
+  <h1 class="text-center" style="font-weight: 700;">Register Now....</h1><br>
+    <div class="col-6">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img class="text-center" width="400px" height="400px"
+            src="https://thumbs.dreamstime.com/b/isometric-artwork-concept-man-using-online-registration-process-isometric-artwork-concept-online-registration-where-140087932.jpg" alt="">
+    </div>
+    <div class="col-6 border border-2 shadow rounded" style="width: 400px; height: 400px; text-align: center;"><br><br><br>
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="row g-3 " style="text-align: center;">
+        <div class="col-auto">
+            <label for="inputName" class="col-form-label"> User Name</label>
+           
+        </div>
+        <div class="col-auto">
+  <input name="username" formControlName="username" type="text" id="inputName6" class="form-control border border-2 shadow rounded" aria-labelledby="nameHelpInline" placeholder="User Name">
+  <div *ngIf="this.registerForm.get('username')?.errors && this.registerForm.get('username')?.touched" class="text-danger ">Invalid username !</div>
+  
+        </div>
+        </div><br>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label for="inputEmail" class="col-form-label">AccountNo</label>
+            </div>
+            <div class="col-auto">
+  <input name="acno" formControlName="acno" type="text" id="inputAccno6" class="form-control border border-2 shadow rounded" aria-labelledby="accnoHelpInline" placeholder="Account No">
+  <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" class="text-danger ">Invalid acno !</div>
+            </div>
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="inputPassword6" class="col-form-label">&nbsp;&nbsp; Password</label>
+                </div>
+                <div class="col-auto">
+  <input name="password" formControlName="password" type="password" id="inputPassword6" class="form-control border border-2 shadow rounded" aria-labelledby="passwordHelpInline"
+                        placeholder="⚫⚫⚫⚫⚫⚫">
+                        <div *ngIf="this.registerForm.get('password')?.errors && this.registerForm.get('password')?.touched" class="text-danger ">Invalid password !</div>
+                </div>
+               
+                  <!-- register error message -->
+                  <div>
+                    <h4 class="text-danger text-center">{{regErrorMsg}}</h4>
+                </div>
+               
+            <button class="w-25 border rounded outline" type="submit" style="margin-left: 150px; ">Register</button>            <a routerLink=""  style="text-decoration: none; color: rgb(61, 41, 240); text-align: center;">Have An Account</a>
+        </div>
+      
+    </div>
+  </form>
+</div>
+    </div>
+    </div>
+    
+
+  
+  
+
+    <section class="">
+  <!-- Footer -->
+  <footer class="bg-secondary text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Footer Content</h5>
+
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
+            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
+            aliquam voluptatem veniam, est atque cumque eum delectus sint!
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Links</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">BankApp.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</section>

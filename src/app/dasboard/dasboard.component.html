@@ -1,0 +1,220 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid" style="background-color: #cf8c8c;">
+    <a class="navbar-brand"> <img width="30px" height="30px" src="https://pngimg.com/uploads/bank/bank_PNG21.png"
+        alt="">SBI Bank</a>
+    <form class="d-flex" role="search">
+      <div class="dropdown-center">
+        <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+          style="background-color: #cf8c8c;">
+          Services
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" data-bs-toggle="offcanvas" href="#offcanvasExample" (click)="getBalance()"> <i
+                class="fa-sharp fa-solid fa-money-check" style="color: #020409;"></i>&nbsp;Balance Enquiry</a></li>
+          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <i
+                class="fa-sharp fa-solid fa-money-bill-transfer" style="color: #000000;"></i>&nbsp;Fund Transfer</a>
+          </li>
+          <li><a class="dropdown-item" routerLink="/transaction"><i class="fa-sharp fa-solid fa-right-from-bracket"
+                style="color: #000000;"></i>&nbsp; Transaction History</a></li>
+          <li><a class="dropdown-item" (click)="deleteAccount()"> <i class="fa-sharp fa-solid fa-user-minus"
+                style="color: #000000;"> </i> &nbsp;Remove Account</a></li>
+          <li><a class="dropdown-item" (click)="logout()"><i class="fa-sharp fa-solid fa-right-from-bracket"
+                style="color: #000000;"></i>&nbsp; Logout</a></li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+<!-- offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h1 class="offcanvas-title fw-bolder" style="margin-left: 60px;" id="offcanvasExampleLabel">Balance Enquiry</h1>
+    <button type="button" class="btn-close " data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <!-- image -->
+      <img height="100%" width="100%" src="https://i.pinimg.com/originals/30/82/dd/3082dd40cdbe3ce2a85c3d8ad661ddc0.gif"
+        alt="">
+    </div>
+    <div>
+      <h3 class="text-center">Welcome
+        {{user}}
+      </h3>
+      <h4 class="text-center"> Your Balance is : <span class="text-success fs-2 fw-bolder">{{balance}}</span> </h4>
+    </div>
+  </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title " style="margin-left: 130px; font-weight: 700;" id="staticBackdropLabel">Fund Transfer
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img width="100%" height="200px" class=""
+          src="https://i.pinimg.com/originals/9c/fc/a4/9cfca4a074ba09f360affcffa6eaf2d3.gif" alt="">
+        <!-- form -->
+
+        <form [formGroup]="fundForm" (ngSubmit)="transfer()">
+          <!-- Credit account number -->
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Credit Account Number</label>
+            <input name="creditacno" formControlName="creditacno" type="text" class="form-control"
+              id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="98765432112">
+            <div *ngIf="this.fundForm.get('creditacno')?.errors && this.fundForm.get('creditacno')?.touched"
+              class="text-danger ">Invalid account No !</div>
+            <div id="emailHelp" class="form-text"></div>
+          </div>
+
+          <!-- User password -->
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" formControlName="password" type="password" class="form-control"
+              id="exampleInputPassword1" placeholder="🤑🤑🤑🤑🤑🤑🤑">
+            <div *ngIf="this.fundForm.get('password')?.errors && this.fundForm.get('password')?.touched"
+              class="text-danger ">Invalid Password !</div>
+
+          </div>
+
+          <!-- Amount -->
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Amount</label>
+            <input name="amount" formControlName="amount" type="text" class="form-control" id="exampleInputPassword1"
+              placeholder="🪙">
+            <div *ngIf="this.fundForm.get('amount')?.errors && this.fundForm.get('amount')?.touched"
+              class="text-danger ">Invalid Amount !</div>
+          </div>
+
+        </form>
+      </div>
+      <div class="my-2 text-success text-center fw-bolder">
+        {{transferSuccess}}
+      </div>
+      <div class="my-2 text-danger text-center fw-bolder">
+        {{transferError}}
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between">
+        <!-- <div style="margin-right: 310px;"> -->
+        <button class="btn btn-light" (click)="fundReset()">Reset</button>
+        <!-- </div> -->
+
+        <button type="button" class="btn btn-light" (click)="fundTransfer()">Transfer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- loading page -->
+<div style="width: 100%; height: 400px;" *ngIf="logoutStatus">
+  <h1 class="m-5 p-5 text-center">Please wait..⏳
+    while u r logging out..
+    <div class="spinner-grow text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </h1>
+</div>
+
+<div style="width: 100%; height: 400px;" *ngIf="deleteSuccessStatus">
+  <h1 class="m-5 p-5 text-center">{{deleteSuccessStatus}}
+    <div class="spinner-grow text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </h1>
+</div>
+
+
+
+<app-delete-account [deleteAcno]="acno" (onDelete)="deleteFromParent()"
+  (onCancel)="cancelDeleteAccount()"></app-delete-account>
+
+
+
+<!-- main content -->
+<div class="container" *ngIf="!logoutStatus && !deleteConfirmStatus">
+  <marquee behavior="scroll" style="color: green;" direction="right" scrollamount="10">Deposit Interest are rasised upto
+    7%</marquee>
+  <div class="row">
+    <div class="col-4">
+      <!-- image -->
+      <img width="100%" height="400px"
+        src="https://cdn.dribbble.com/users/14268/screenshots/5583545/unold_icon1_animation_loop_f.gif" alt="">
+    </div>
+    <div class="col-8">
+      <!-- content -->
+      <!-- heading -->
+      <h1 class="text fw-bolder fs-1">Welcome {{user}}</h1>
+      <!-- paragraph -->
+      <p style="text-align: justify;">Banking implies an activity where a licensed financial institution safeguards your
+        money. You can park your hard-earned money in Current and Savings Accounts. You can also earn attractive
+        interest income by investing in interest generating term deposits. Banks also offer a wide variety of loans and
+        overdraft facilities, depending on the type of account you open. Banks cater to a wide variety of customers –
+        from retail investors to small and large business corporations. As a bank customer, you can visit your bank
+        branch or enjoy remote banking services online through mobile or net banking.</p>
+      <!-- button -->
+      <div class="collapse" id="collapseExample">
+        <div>
+          <p style="text-align: justify;">
+            Financial management is integral in leading a quality life. A bank is a financial institution that enables
+            you to manage your finances, thereby empowering you to live a financially secure life. Banks provide an
+            array of financial services encompassing savings and investments, which help you gradually build a corpus.
+            This article attempts to decode the age-old puzzle – what is banking and how it works. Read on to know more.
+          </p>
+        </div>
+      </div>
+      <button (click)="collapse()" class="btn border-secondary" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample">Read
+        <span *ngIf="isCollapse">More</span>
+        <span *ngIf="!isCollapse">Less</span></button>
+
+      <div class="col-4"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="text-center text-white" style="background-color: #cf8c8c;">
+  <!-- Grid container -->
+  <div class="container pt-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-linkedin"></i></a>
+      <!-- Github -->
+      <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button" data-mdb-ripple-color="dark"><i
+          class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center text-dark p-3" style="background-color: rgb(197, 106, 106);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://bankapp.com/">BankApp.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>

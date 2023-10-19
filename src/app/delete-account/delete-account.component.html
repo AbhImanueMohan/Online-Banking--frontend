@@ -1,0 +1,14 @@
+<div class="container" *ngIf="deleteAcno">
+    <div class="row">
+        <div class="col">
+            <div class="border m-5 p-5 m-5 text-center">
+            <h3 class="text-center text-danger">Are u sure.. Do u want to delete this Account ?</h3>
+           <div class="text-center p-5 ">
+            <button class="btn btn-success me-5 mt-5" (click)="deleteFromChild()">yes</button>
+            <button class="btn btn-danger mt-5"  (click)="cancel()">no</button>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+

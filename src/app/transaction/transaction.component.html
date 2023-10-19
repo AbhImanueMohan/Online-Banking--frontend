@@ -1,0 +1,131 @@
+
+<!-- navbar -->
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid" style="background-color: #cf8c8c;">
+      <a class="navbar-brand"> <img width="30px" height="30px" src="https://pngimg.com/uploads/bank/bank_PNG21.png" alt="">SBI Bank</a>
+      <form class="d-flex" role="search">
+        <div class="dropdown-center">
+            <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #cf8c8c;">
+              Services
+            </button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <ul class="dropdown-menu" >
+              <li><a class="dropdown-item" data-bs-toggle="offcanvas" href="#offcanvasExample" > <i class="fa-sharp fa-solid fa-money-check"  style="color: #020409;"></i>&nbsp;Balance Enquiry</a></li>
+              <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <i class="fa-sharp fa-solid fa-money-bill-transfer" style="color: #000000;"></i>&nbsp;Fund Transfer</a></li>
+              <li><a class="dropdown-item" routerLink="/transaction"><i class="fa-sharp fa-solid fa-right-from-bracket" style="color: #000000;"></i>&nbsp; Transaction History</a></li>
+              <li><a class="dropdown-item" href="#"> <i class="fa-sharp fa-solid fa-user-minus" style="color: #000000;"> </i> &nbsp;Remove Account</a></li>
+              <li><a class="dropdown-item" href="#" (click)="logout()"><i class="fa-sharp fa-solid fa-right-from-bracket" style="color: #000000;"></i>&nbsp; Logout</a></li>
+            </ul>
+          </div>
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+    <h1 class="text-center text-primary">Transaction History</h1>
+    <p style="text-align: justify;">Banking implies an activity where a licensed financial institution safeguards your money. You can park your hard-earned money in Current and Savings Accounts. You can also earn attractive interest income by investing in interest generating term deposits. Banks also offer a wide variety of loans and overdraft facilities, depending on the type of account you open. Banks cater to a wide variety of customers – from retail investors to small and large business corporations. As a bank customer, you can visit your bank branch or enjoy remote banking services online through mobile or net banking.</p>
+    <div class="row">
+        <div class="col-6">
+            <!-- input tag for searching -->
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Search" class="form-control">
+        </div>
+        <div class="col-6">
+            <!-- button for exporting pdf -->
+            <button (click)="exportPdf()" class="btn btn-primary" style="float: right;">Export as pdf</button>
+        </div>
+    </div>
+    <div class="row">
+    <caption class="mt-5">All Transaction History</caption>
+    <table class="mb-5">
+        <!-- table for transaction details -->
+        <thead>
+            <tr class="border border-2">
+                <th class="border border-2">Ref No</th>
+                <th class="border border-2">Type</th>
+                <th class="border border-2">From Account No</th>
+                <th class="border border-2">To Account No</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transaction of allTransaction | pipes: searchTerm:'type' ; let i=index" class="border border-2">
+                <td class="border border-2">{{i+1}} </td>
+                <td class="border border-2"> {{transaction.type}} </td>
+                <td class="border border-2">{{transaction.fromAcno}} </td>
+                <td class="border border-2">{{transaction.toAcno}} </td>
+                <td >Rs. {{transaction.amount}} </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+  </div>
+
+  <footer class="text-center text-white" style="background-color: #cf8c8c;">
+    <!-- Grid container -->
+    <div class="container pt-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <!-- Github -->
+        <a
+          class="btn btn-link btn-floating btn-lg text-dark m-1"
+          href="#!"
+          role="button"
+          data-mdb-ripple-color="dark"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center text-dark p-3" style="background-color: rgb(197, 106, 106);">
+      © 2020 Copyright:
+      <a class="text-dark" href="https://bankapp.com/">BankApp.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
